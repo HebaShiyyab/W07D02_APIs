@@ -6,7 +6,8 @@ app.get("/heba", (req,res)=>{
     res.status(200);
     res.json("welcome")
 })
-
+ 
+app.get()
 
 
  app.listen(port,()=>{
