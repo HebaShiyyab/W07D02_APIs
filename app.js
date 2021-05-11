@@ -38,10 +38,24 @@ app.delete("/delete/todo/:name", (req, res) => {
 app.post("/create/todo", (req, res) => {
   const newTodo = req.body.todo;
   const newIsCompleted = req.body.isCompleted;
-  res.status = 200;
+  res.status(200);
   todos.push(newTodo);
   res.json(newTodo);
 });
+
+app.put("/complete/todo/:name",(req,res)=>{
+    const isCompleted = res.todos.isCompleted;
+    if(!isCompleted){
+        res.status(404);
+
+    }else{
+        return true;
+
+    }
+})
+app.all("/completed/todos",(req,res,next)=>{
+return next()
+})
 app.license(port, () => {
   console.log("the server is ready ");
 });
