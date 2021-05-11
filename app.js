@@ -13,8 +13,27 @@ app.get("/todos ", (req, res) => {
 });
 app.put("/update/todo/:name", (req, res) => {
   const todos_todo = req.params.name;
-  
-  res.json();
+  const found = todos.find((element) => {
+    return element.name === newTodo;
+  });
+  if (found) {
+    res.status(201);
+    res.json(found);
+  }else{
+      res.status(404);
+  }
+});
+
+app.delete("/delete/todo/:name", (req, res) => {
+    const name = req.params.name;
+    const found = todos.find((element)=>{
+        return element.name === newTodo;
+    })
+    if(found){
+      todos.slice(1)  
+      res.json(found);
+      res.status(201)
+    }
 });
 app.post("/create/todo", (req, res) => {
   const newTodo = req.body.todo;
